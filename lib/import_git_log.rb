@@ -1,7 +1,6 @@
 class ImportGitLog
   GIT_LOG_REGEX    = /commit\s(\w+)\n(?:Merge.*?\n)*Author:\s(.*?)\s<(.*?)>\nDate:(.*?)\n\n(.*?)\n\n(?=commit)/m
   LAST_OCCUR_REGEX = /commit\s(\w+)\n(?:Merge.*?\n)*Author:\s(.*?)\s<(.*?)>\nDate:(.*?)\n\n(.*)/m
-  BUG_REGEX        = /cr\s(?:#|number\s)?(\d+)/i
 
   def call(file)
     commits = parse(file)
@@ -21,7 +20,7 @@ class ImportGitLog
       ActiveRecord::Base.transaction do
         author = Author.find_or_create_by(name: commit[:author], 
                                           email: commit[:email])
-        bug = Bug.create!(cr_number: $1) if commit[:message] =~ BUG_REGEX
+        bug = Bug.create!(cr_number: $1) if commit[:message] =~ Commit::BUG_REGEX
         commit = Commit.create!(commit_hash: commit[:commit_hash], 
                                 message: commit[:message], 
                                 committed_at: Time.parse(commit[:date]), 

@@ -1,0 +1,14 @@
+<script>
+  $(document).ready( function() {
+    $('#committed_at').datepicker({
+        dateFormat: "yy-mm-dd",
+        changeYear: true,
+        yearRange: '1900:' + new Date().getFullYear(),
+        maxDate: new Date(),
+        showOn: "button",
+        buttonImage: "assets/calendar.gif",
+        buttonImageOnly: true,
+        buttonText: "Select date"
+    })
+  });
+</script>

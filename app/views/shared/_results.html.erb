@@ -1,0 +1,24 @@
+<% flash_content = parse_flash(flash) %>
+<% if flash_content.present? %>
+  <%= display_flash(flash_content) %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Subject</th>
+    <th>Author</th>
+    <th>Hash</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% presenter.each do |commit| %>
+    <tr>
+      <td><%= commit.committed_at %></td>
+      <td><%= html_safe(commit.message) %></td>
+      <td><%= commit.author %></td>
+      <td><%= commit.commit_hash %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
