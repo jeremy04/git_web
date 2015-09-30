@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails app for viewing git logs
 
-Things you may want to cover:
+Using rbenv (sorry RVM, I don't use it anymore)
+    $ git clone https://github.com/jeremy04/git_web.git
+    $ cd git_web
+    $ gem install bundler
+    $ bundle install
+    $ rake db:migate
+    $ rake db:seed
 
-* Ruby version
+"Rake seed" does the importing of the sample git log. 50% of the code is for importing, the rest is for the UI.
+Not much going on here, so unit testing is very minimal.
 
-* System dependencies
+This was a sample project that was given during an interview.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
